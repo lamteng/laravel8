@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-route::get('/hello', function(){
-    return view('hello');
+Route::get('/hello', function(){
+    $variable = "Hello from Routes.";
+    return view('subviews.hello', [ 
+        'someData' => $variable 
+    ]);
 });
