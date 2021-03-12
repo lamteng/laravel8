@@ -1,6 +1,9 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/hello', function(){
-    $variable = "Hello from Routes.";
-    return view('subviews.hello', [ 
-        'someData' => $variable 
-    ]);
-});
+Route::get('/hello', 'App\Http\Controllers\HelloController@index');
+
+    
+//    return view('subviews.hello', 
+//    [ 
+//        'coolString' => $coolString 
+//    ]
+//    );
+
