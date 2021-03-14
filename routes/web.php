@@ -19,7 +19,14 @@ use App\Http\Controllers;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/hello', 'App\Http\Controllers\HelloController@index');
+Route::get('/about', 'App\Http\Controllers\HelloController@about');
+Route::get('/service', 'App\Http\Controllers\ServiceController@index');
+
+Route::post('/service', 'App\Http\Controllers\ServiceController@store');
+
+
+//Route::view('/about', 'about');
+//Route::view('/services', 'services');
 
     
 //    return view('subviews.hello', 

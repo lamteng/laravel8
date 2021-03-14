@@ -8,10 +8,7 @@
     <title>@yield('title')</title>
 </head>
 <body>
-<ul>
-    <li><a href="/about">About Us</a></li>
-    <li><a href="/services">Service</a></li>
-</ul>    
+    @include('nav')
     @yield('content')
 
 </body>
