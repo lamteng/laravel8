@@ -24,6 +24,13 @@ Route::get('/service', 'App\Http\Controllers\ServiceController@index');
 
 Route::post('/service', 'App\Http\Controllers\ServiceController@store');
 
+Route::get('/customers', 'App\Http\Controllers\CustomerController@index');
+Route::get('/customers/create', 'App\Http\Controllers\CustomerController@create');
+Route::post('/customers', 'App\Http\Controllers\CustomerController@store');
+Route::get('/customers/{customer}', 'App\Http\Controllers\CustomerController@show');
+Route::get('/customers/{customer}/edit', 'App\Http\Controllers\CustomerController@edit');
+Route::patch('/customers/{customer}', 'App\Http\Controllers\CustomerController@update');
+
 
 //Route::view('/about', 'about');
 //Route::view('/services', 'services');
