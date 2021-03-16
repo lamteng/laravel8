@@ -30,6 +30,7 @@ Route::post('/customers', 'App\Http\Controllers\CustomerController@store');
 Route::get('/customers/{customer}', 'App\Http\Controllers\CustomerController@show');
 Route::get('/customers/{customer}/edit', 'App\Http\Controllers\CustomerController@edit');
 Route::patch('/customers/{customer}', 'App\Http\Controllers\CustomerController@update');
+Route::delete('/customers/{customer}', 'App\Http\Controllers\CustomerController@destroy');
 
 
 //Route::view('/about', 'about');

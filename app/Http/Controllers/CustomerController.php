@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -9,50 +10,47 @@ class CustomerController extends Controller
     //
     public function index(){
         
-        $customers = \App\Models\Customer::all();
+        $customers = Customer::where('active',1)->get();
 
         return view('customer.index', compact('customers'));
     }
 
     public function create(){
-        return view('customer.create');
+
+        $customer = new Customer();
+
+        return view('customer.create', compact('customer'));
     }
     public function store(){
-        $data = request()->validate([
-            'name'=>'required',
-            'email'=>'required|email'
-        ]);
  
-        \App\Models\Customer::create($data);
-//        $customer = new \App\Models\Customer();
-//        $customer->name = request('name');
-//        $customer->email = request('email');
-//        $customer->save();
+        $customer = Customer::create($this->validatedData());
 
-       return redirect('/customers');
+       return redirect('/customers/'. $customer->id);
     }
-    public function show(\App\Models\Customer $customer){
-        //$customer = \App\Models\Customer::findOrFail($customerId);
-        //dd($customer);  
+    public function show(Customer $customer){
         return  view('customer.show', compact('customer'));
     }
-    public function edit(\App\Models\Customer $customer){
+    public function edit(Customer $customer){
 
         return  view('customer.edit', compact('customer'));
     }
-    public function update(\App\Models\Customer $customer){
-        $data = request()->validate([
+    public function update(Customer $customer){
+ 
+       return redirect('/customers');
+    }
+    public function destroy(Customer $customer){
+ 
+        $customer->delete();
+
+       return redirect('/customers');
+    }
+
+    protected function validatedData()
+    {
+        return request()->validate([
             'name'=>'required',
             'email'=>'required|email'
         ]);
- 
-        $customer->update($data);
-        //        $customer = new \App\Models\Customer();
-//        $customer->name = request('name');
-//        $customer->email = request('email');
-//        $customer->save();
-
-       return redirect('/customers');
     }
     
 }
