@@ -16,6 +16,16 @@ use App\Http\Controllers;
 |
 */
 
+//use \App\Mail\WelcomeMail;
+//use Illuminate\Support\Facades\Mail;
+
+//Route::get('/email', function () {
+//    Mail::to('email@email.com')->send(new WelcomeMail());
+
+//    return new WelcomeMail();
+//});
+
+
 Route::get('/', function () {
     return view('welcome');
 });
