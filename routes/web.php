@@ -53,3 +53,7 @@ Route::delete('/customers/{customer}', 'App\Http\Controllers\CustomerController@
 //    ]
 //    );
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
